@@ -1,0 +1,8 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Roy Quader
+	email = 35521+roydq@users.noreply.github.com
+[core]
+	editor = /usr/local/bin/nvim
+[push]
+	default = current

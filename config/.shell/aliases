@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+## Rails ##
+alias b="bundle exec"
+alias brake="bin/rake"
+alias brails="bin/rails"
+
+# Tunneling
+alias ssh-efapps-dev="sshtunnel efapps-dev-gateway 8888:localhost:8888"
+alias ssh-efapps-lt="sshtunnel efapps-lt-gateway 8888:localhost:8888"
+alias ssh-efapps-prod="sshtunnel efapps-prod-gateway 8888:localhost:8888"
+
+# Kubernetes
+alias kube-here="KUBECONFIG=~/.kube/docker-kubeconfig kubectl"
+alias kube-dev="KUBECONFIG=~/.kube/everfi-eks-dev-kubeconfig HTTPS_PROXY=localhost:8888 kubectl"
+alias kube-lt="KUBECONFIG=~/.kube/everfi-eks-lt-kubeconfig HTTPS_PROXY=localhost:8888 kubectl"
+alias kube-prod="KUBECONFIG=~/.kube/everfi-eks-prod-kubeconfig HTTPS_PROXY=localhost:8888 kubectl"
+
+# Kube Proxy
+alias kube-dev-proxy="kube-dev proxy --port 9000"
+alias kube-lt-proxy="kube-lt proxy --port 9002"
+alias kube-prod-proxy="kube-prod proxy --port 9100"
+
+# Deis
+alias deis-dev="DEIS_PROFILE=$HOME/.deis/dev.json deis"
+alias deis-lt="DEIS_PROFILE=$HOME/.deis/lt.json deis"
+alias deis-prod="DEIS_PROFILE=$HOME/.deis/prod.json deis"
+alias efapps-dev="DEIS_PROFILE=dev efapps"
+alias efapps-lt="DEIS_PROFILE=lt efapps"
+alias efapps-prod="DEIS_PROFILE=prod efapps"
