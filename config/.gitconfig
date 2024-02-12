@@ -3,6 +3,6 @@
 	name = Roy Quader
 	email = 35521+roydq@users.noreply.github.com
 [core]
-	editor = /usr/local/bin/nvim
+	editor = nvim
 [push]
 	default = current

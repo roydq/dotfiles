@@ -6,9 +6,9 @@ alias brake="bin/rake"
 alias brails="bin/rails"
 
 # Tunneling
-alias ssh-efapps-dev="sshtunnel efapps-dev-gateway 8888:localhost:8888"
-alias ssh-efapps-lt="sshtunnel efapps-lt-gateway 8888:localhost:8888"
-alias ssh-efapps-prod="sshtunnel efapps-prod-gateway 8888:localhost:8888"
+alias ssh-eks-dev="kubectl-ssm-tunnel dev"
+alias ssh-eks-lt="kubectl-ssm-tunnel lt"
+alias ssh-eks-prod="kubectl-ssm-tunnel prod"
 
 # Kubernetes
 alias kube-here="KUBECONFIG=~/.kube/docker-kubeconfig kubectl"

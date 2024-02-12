@@ -22,3 +22,13 @@ ec2-ip-from-id() {
 ec2-terminate-in-asg() {
   aws autoscaling terminate-instance-in-auto-scaling-group --instance-id $1 --no-should-decrement-desired-capacity
 }
+
+kubectl-ssm-tunnel() {
+  local efapps_env=$1
+  local instance_id=$(aws ec2 describe-instances \
+                 --filter "Name=tag:Name,Values=efapps-$efapps_env-admin-bastion-instance" \
+                 --query "Reservations[].Instances[?State.Name == 'running'].InstanceId[]" \
+                 --output text)
+
+  aws ssm start-session --target $instance_id --document-name AWS-StartPortForwardingSession --parameters '{"portNumber":["8888"], "localPortNumber":["8888"]}'
+}

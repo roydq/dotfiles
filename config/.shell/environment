@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Set EDITOR
 export EDITOR='nvim'
 
 export LESS=-R
@@ -18,30 +17,20 @@ if [ -d "/usr/local/opt/go/libexec" ]; then
 else
   export GOROOT=/usr/local/go
 fi
+
 # Use .go instead of go
 export GOPATH=$HOME/.go
 
-# Path to powerline status libs
-if command -v pip3 &> /dev/null; then
-  # Have to do this nonsense to get python package dir, really stupid language
-  local python_package_path="$(pip3 show powerline-status | grep "Location" | awk '{ FS = ":"; print $2 }')"
-
-  # No idea why this installs to different locations on different machines
-  if [ -d "$python_package_path/powerline" ]; then
-    export POWERLINE_LIB_PATH=$python_package_path/powerline
-  elif [ -d "$python_package_path/powerline-status" ]; then
-    export POWERLINE_LIB_PATH=$python_package_path/powerline-status
-  fi
-fi
-
-# Add library paths to path
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.local/bin:$HOME/.rbenv/bin:$PATH"
-
-# N install
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export PATH="/opt/homebrew/bin:$PATH"
 
 # homebrew on linux
 [[ -d /home/linuxbrew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Load rbenv
-eval "$(rbenv init -)"
+command -v rbenv &> /dev/null && eval "$(rbenv init -)"
+
+# Path to powerline status libs
+if command -v pip3 &> /dev/null; then
+  local python_package_path="$(pip3 show powerline-status | grep "Location" | awk '{ FS = ":"; print $2 }')"
+  export POWERLINE_LIB_PATH=$python_package_path/powerline
+fi

@@ -24,8 +24,8 @@ linked_paths=(.tmux.conf .gitconfig .shell .zshrc .config/nvim .config/powerline
 
 # Just in case
 mkdir -p ~/.local/share/nvim
-mkdir -p ~/.local/share/nvim
 mkdir -p ~/.config
+mkdir -p ~/.oh-my-zsh/custom/themes
 
 # Link dotfiles
 echo "Linking dotfiles..."
