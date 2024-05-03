@@ -9,28 +9,14 @@ export AWS_VAULT_BACKEND=pass
 # Fix gpg not asking for password
 export GPG_TTY=$(tty)
 
-# Set paths for golang
-# This is where it ends up on OS X
-if [ -d "/usr/local/opt/go/libexec" ]; then
-  export GOROOT=/usr/local/opt/go/libexec
-# Should be here if installed manually
-else
-  export GOROOT=/usr/local/go
-fi
+# Managed homebrew install on OS X
+[[ -d /opt/homebrew/bin ]] && export PATH="/opt/homebrew/bin:$PATH"
 
-# Use .go instead of go
-export GOPATH=$HOME/.go
-
-export PATH="/opt/homebrew/bin:$PATH"
-
-# homebrew on linux
+# Homebrew on linux
 [[ -d /home/linuxbrew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# .local/bin
+[[ -d $HOME/.local/bin ]] && export PATH="$HOME/.local/bin:$PATH"
 
 # Load rbenv
 command -v rbenv &> /dev/null && eval "$(rbenv init -)"
-
-# Path to powerline status libs
-if command -v pip3 &> /dev/null; then
-  local python_package_path="$(pip3 show powerline-status | grep "Location" | awk '{ FS = ":"; print $2 }')"
-  export POWERLINE_LIB_PATH=$python_package_path/powerline
-fi

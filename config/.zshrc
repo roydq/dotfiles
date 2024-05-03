@@ -72,12 +72,6 @@ source $HOME/.shell/environment
 source $HOME/.shell/functions
 source $HOME/.shell/aliases
 
-# Load powerline zsh bindings, but don't use prompt
-if [ -x "$POWERLINE_LIB_PATH" ]; then
-  export POWERLINE_NO_ZSH_PROMPT=true
-  source $POWERLINE_LIB_PATH/bindings/zsh/powerline.zsh
-fi
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -104,8 +98,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+#[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
