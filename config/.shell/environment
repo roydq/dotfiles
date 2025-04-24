@@ -19,4 +19,4 @@ export GPG_TTY=$(tty)
 [[ -d $HOME/.local/bin ]] && export PATH="$HOME/.local/bin:$PATH"
 
 # Load rbenv
-command -v rbenv &> /dev/null && eval "$(rbenv init -)"
+command -v rbenv &> /dev/null && eval "$(rbenv init - --no-rehash zsh)"

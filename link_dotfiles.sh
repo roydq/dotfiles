@@ -20,7 +20,7 @@ function create_link() {
 config_path=$PWD/config
 
 # Files and directories to link
-linked_paths=(.tmux.conf .gitconfig .shell .zshrc .config/nvim .config/powerline .local/share/nvim/site .oh-my-zsh/custom/themes/roy.zsh-theme)
+linked_paths=(.tmux.conf .gitconfig .shell .zshrc .config/nvim .local/share/nvim/site .oh-my-zsh/custom/themes/roy.zsh-theme)
 
 # Just in case
 mkdir -p ~/.local/share/nvim

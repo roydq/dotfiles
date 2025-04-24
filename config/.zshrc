@@ -64,13 +64,14 @@ plugins=(
   git
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
-
 source $HOME/.shell/environment
 source $HOME/.shell/functions
 source $HOME/.shell/aliases
+
+# source omz after env vars
+source $ZSH/oh-my-zsh.sh
+
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
