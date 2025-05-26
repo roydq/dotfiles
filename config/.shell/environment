@@ -18,5 +18,8 @@ export GPG_TTY=$(tty)
 # .local/bin
 [[ -d $HOME/.local/bin ]] && export PATH="$HOME/.local/bin:$PATH"
 
+# opt nvim
+[[ -d /opt/nvim ]] && export PATH="/opt/nvim:$PATH"
+
 # Load rbenv
 command -v rbenv &> /dev/null && eval "$(rbenv init - --no-rehash zsh)"
