@@ -9,9 +9,6 @@ export AWS_VAULT_BACKEND=pass
 # Fix gpg not asking for password
 export GPG_TTY=$(tty)
 
-# Managed homebrew install on OS X
-[[ -d /opt/homebrew/bin ]] && export PATH="/opt/homebrew/bin:$PATH"
-
 # Homebrew on linux
 [[ -d /home/linuxbrew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -23,3 +20,10 @@ export GPG_TTY=$(tty)
 
 # Load rbenv
 command -v rbenv &> /dev/null && eval "$(rbenv init - --no-rehash zsh)"
+
+# Load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Load starship prompt
+command -v starship &> /dev/null && eval "$(starship init zsh)"
