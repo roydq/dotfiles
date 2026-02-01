@@ -1,34 +1,26 @@
 #!/bin/bash
 
-# Simple ssh tunneling
 # sshtunnel bastion.host localport:destination.host:remoteport
-sshtunnel () { ssh -N -T -v -L $2 $1; }
+sshtunnel() { ssh -N -T -v -L $2 $1; }
 
 # Used to encrypt AWS SMTP passwords
 aws_secret_to_smtp() {
-  (echo -en "\x02"; echo -n 'SendRawEmail' \
-  | openssl dgst -sha256 -hmac $1 -binary) \
-  | openssl enc -base64
+  (
+    echo -en "\x02"
+    echo -n 'SendRawEmail' |
+      openssl dgst -sha256 -hmac $1 -binary
+  ) |
+    openssl enc -base64
 }
 
-ecr-login() {
+aws-ecr-login() {
   $(aws ecr get-login --no-include-email --region 'us-east-1')
 }
 
-ec2-ip-from-id() {
+aws-ec2-ip-from-id() {
   aws ec2 describe-instances --instance-ids $1 | jq -r '.Reservations[0].Instances[0].PrivateDnsName'
 }
 
-ec2-terminate-in-asg() {
+aws-ec2-terminate-in-asg() {
   aws autoscaling terminate-instance-in-auto-scaling-group --instance-id $1 --no-should-decrement-desired-capacity
-}
-
-kubectl-ssm-tunnel() {
-  local efapps_env=$1
-  local instance_id=$(aws ec2 describe-instances \
-                 --filter "Name=tag:Name,Values=efapps-$efapps_env-admin-bastion-instance" \
-                 --query "Reservations[].Instances[?State.Name == 'running'].InstanceId[]" \
-                 --output text)
-
-  aws ssm start-session --target $instance_id --document-name AWS-StartPortForwardingSession --parameters '{"portNumber":["8888"], "localPortNumber":["8888"]}'
 }

@@ -5,16 +5,11 @@ alias b="bundle exec"
 alias brake="bin/rake"
 alias brails="bin/rails"
 
-# Tunneling
-alias ssh-eks-dev="kubectl-ssm-tunnel dev"
-alias ssh-eks-lt="kubectl-ssm-tunnel lt"
-alias ssh-eks-prod="kubectl-ssm-tunnel prod"
-
 # Kubernetes
 alias kube-here="KUBECONFIG=~/.kube/docker-kubeconfig kubectl"
-alias kube-dev="KUBECONFIG=~/.kube/everfi-eks-dev-kubeconfig HTTPS_PROXY=localhost:8888 kubectl"
-alias kube-lt="KUBECONFIG=~/.kube/everfi-eks-lt-kubeconfig HTTPS_PROXY=localhost:8888 kubectl"
-alias kube-prod="KUBECONFIG=~/.kube/everfi-eks-prod-kubeconfig HTTPS_PROXY=localhost:8888 kubectl"
+alias kube-dev="KUBECONFIG=~/.kube/tf-dev-kubeconfig kubectl"
+alias kube-lt="KUBECONFIG=~/.kube/tf-lt-kubeconfig kubectl"
+alias kube-prod="KUBECONFIG=~/.kube/everfi-eks-prod-kubeconfig kubectl"
 
 # Kube Proxy
 alias kube-dev-proxy="kube-dev proxy --port 9000"
