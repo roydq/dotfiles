@@ -153,6 +153,8 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
+source $HOME/.shell/termsupport.zsh
+
 # User configuration
 source $HOME/.shell/environment
 source $HOME/.shell/functions
